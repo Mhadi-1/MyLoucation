@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tvEnabledNet" type="id" />
+    <item name="tvEnabledGPS" type="id" />
+    <item name="tvStatusGPS" type="id" />
+    <item name="tvLocationGPS" type="id" />
+    <item name="tvStatusNet" type="id" />
+    <item name="tvLocationNet" type="id" />
+    <item name="tvTitleGPS" type="id" />
+    <item name="btnLocationSettings" type="id" />
+    <item name="tvTitleNet" type="id" />
+</resources>
