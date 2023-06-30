@@ -21,8 +21,11 @@ import androidx.core.app.ActivityCompat;
 
 import ArrayList.LatLng;
 
+import java.util.ArrayList;
+
 
 class Dot extends View{
+
     private final float x;
     private final float y;
     private final int r = 5;
@@ -54,6 +57,9 @@ class Dot extends View{
 
 
 public class MainActivity extends Activity {
+
+    ArrayList<LatLng> locationList = new ArrayList<>();
+
     TextView tvEnabledGPS;
     TextView tvStatusGPS;
     TextView tvLocationGPS;
@@ -61,13 +67,16 @@ public class MainActivity extends Activity {
     TextView tvStatusNet;
     TextView tvLocationNet;
     private LocationManager locationManager;
+
     StringBuilder sbGPS = new StringBuilder();
+
     StringBuilder sbNet = new StringBuilder();
 
 
     @Override
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         tvEnabledGPS = (TextView) findViewById(R.id.tvEnabledGPS);
@@ -136,25 +145,36 @@ public class MainActivity extends Activity {
             }
         }
     };
-
     private void showLocation(Location location) {
         if (location == null)
             return;
-        if (location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
+        if (location.getProvider().equals(LocationManager.GPS_PROVIDER))
+
+        {
+
+
+
             tvLocationGPS.setText(formatLocation(location));
-        } else if (location.getProvider().equals(
-                LocationManager.NETWORK_PROVIDER)) {
+
+            locationList.add(new LatLng(location.getLatitude(), location.getLongitude()));
+
+
+
+        } else if (location.getProvider().equals(LocationManager.NETWORK_PROVIDER)) {
             tvLocationNet.setText(formatLocation(location));
+            locationList.add(new LatLng(location.getLatitude(), location.getLongitude()));
         }
     }
+
 
     private String formatLocation(Location location) {
         if (location == null)
             return "";
         return String.format(
-                "Coordinates: lat = %1$.4f, lon = %2$.4f, time = %3$tF %3$tT",
-                location.getLatitude(), location.getLongitude(), new Date(
-                        location.getTime()));
+                "Coordinates: lat = %1$.4f, lon = %2$.4f ",
+
+
+                location.getLatitude(), location.getLongitude());
     }
 
     private void checkEnabled() {
